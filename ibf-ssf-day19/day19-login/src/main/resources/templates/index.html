@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Login</h1>
+
+		<form method="POST" action="/login" data-th-object="${user}">
+			<table>
+				<tr>
+					<td>Username: </td>
+					<td><input type="text" size="30" data-th-field="*{username}"></td>
+				</tr>
+				<tr>
+					<td>Password: </td>
+					<td><input type="password" size="30" data-th-field="*{password}"></td>
+				</tr>
+				<tr data-th-if="${captcha}">
+					<td>Captcha: </td>
+					<td> 
+						<div>
+							<h5>Please complete the following captcha</h5>
+							<span data-th-text="${opnd0}"></span> + <span data-th-text="${opnd1}"></span> =
+							<input type="number" data-th-field="*{answer}">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><button type="submit">Login</button></td>
+				</tr>
+				<tr data-th-if="${#fields.hasErrors('global')}">
+					<td></td>
+					<td>
+						Error:
+						<span data-th-errors="*{global}"></span>
+					</td>
+				</tr>
+			</table>
+
+			<div data-th-if="${attempts > 0}">
+				<h4>You have 1 more attempt</h4>
+			</div>
+
+		</form>
+
+		<!-- <div data-th-if="${showAttempts}">
+			<h4>You have <span data-th-text="${showAttemptsLeft}"></span> more attempt</h4>
+		</div> -->
+	</body>
+</html>

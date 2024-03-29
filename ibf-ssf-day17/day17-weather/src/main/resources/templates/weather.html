@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+   </head>
+   <body>
+
+      <h1>Weather for <code data-th-text="${city}"></code></h1>
+
+      <div data-th-if="${#lists.isEmpty(weather)}">
+         <h2>Cannot get weather for your fictional city</h2>
+      </div>
+
+      <div>
+         <a href="/">Back</a>
+      </div>
+
+      <div data-th-unless="${#lists.isEmpty(weather)}">
+         <div data-th-each="w: ${weather}">
+            <table>
+               <tr>
+                  <td>
+                     <img data-th-src="@{https://openweathermap.org/img/wn/{icon}@2x.png(icon=${w.icon})}">
+                  </td>
+                  <td>
+                     <span data-th-text="${w.main}"></span>
+                     <span data-th-text="${w.description}"></span>
+                  </td>
+               </tr>
+            </table>
+         </div>
+      </div>
+      
+   </body>
+</html>

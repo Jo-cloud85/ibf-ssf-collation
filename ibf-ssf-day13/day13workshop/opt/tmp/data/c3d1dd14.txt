@@ -1,0 +1,4 @@
+Name: Sarah
+Email: sarah@gmail.com
+Phone Number: 88888888
+Date of Birth: 2024-02-26

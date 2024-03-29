@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo List</title>
+</head>
+<body>
+    <form method="POST" action="/todo">
+        <table>
+           <tr>
+              <td>Task:</td>
+              <td>
+                 <input type="text" name="task" size="256">
+              </td>
+           </tr>
+           <tr>
+              <td>Priority:</td>
+              <td>
+                <select name="priority">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </td>
+           </tr>
+           <tr>
+            <td>Due Date:</td>
+            <td>
+               <input type="date" name="dueDate">
+            </td>
+         </tr>
+           <tr>
+              <td></td>
+              <td> <button type="submit">Add</button> </td>
+           </tr>
+        </table>
+  
+     </form>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+
+   <h1>Shopping Cart</h1>
+
+   <form method="GET" action="/cart">
+      <input type="hidden" name="_cart" data-th-value="${newCart}">
+      <table>
+         <tr>
+            <td>Item:</td>
+            <td><input type="text" name="item" size="30" required></td>
+         </tr>
+         <tr>
+            <td>Quantity:</td>
+            <td><input type="number" name="quantity" min="1"></td>
+         </tr>
+         <tr>
+            <td></td>
+            <td><button type="submit"> Add </button></td>
+         </tr>
+      </table>
+   </form>
+
+   <div data-th-if="${#lists.isEmpty(cart)}">
+      <h3>Your cart is empty</h3>
+   </div>
+
+   <div data-th-unless="${#lists.isEmpty(cart)}">
+      <h2>Items in Cart</h2>
+      <table border="1">
+         <thead>
+            <tr>
+               <th>Item</th>
+               <th>Quantity</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr data-th-each="i: ${cart}">
+               <td> <span data-th-text="${i.name}"></span> </td>
+               <td> <span data-th-text="${i.quantity}"></span> </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</body>
+</html>

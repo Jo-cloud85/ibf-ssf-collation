@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Document</title>
+		<link rel="stylesheet" 
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+		crossorigin="anonymous">
+	</head>
+	<body>
+		
+		<div class="container pt-5 text-monospace">
+			<h1 class="font-weight-bold">Todo List</h1>
+			<form class="pt-3" method="POST" action="/todo" data-th-object="${task}">
+				<div class="form-group">
+					<label>Task: </label>
+					<input 
+						class="form-control" 
+						placeholder="Your task description here" 
+						type="text" 
+						name="taskDescription" 
+						size="256" 
+						data-th-field="*{taskDescription}">
+					<small 
+						data-th-if="${#fields.hasErrors('taskDescription')}"
+						data-th-each="err: ${#fields.errors('taskDescription')}"
+						data-th-text="${err}">
+					</small>
+				</div>
+				<div class="form-group">
+					<label>Priority: </label>
+					<select 
+						class="form-control" 
+						name="priority"
+						data-th-field="*{priority}">
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Due Date:</label>
+					<input 
+						class="form-control" 
+						type="date" 
+						name="dueDate" 
+						data-th-field="*{dueDate}">
+					<small data-th-if="${#fields.hasErrors('dueDate')}"
+						data-th-errors="*{dueDate}"
+						data-th-errorclass="error"></small>
+				</div>
+				<div class="pt-2">
+					<button 
+						type="submit" 
+						formmethod="POST" 
+						formaction="/exit" 
+						class="btn btn-danger rounded-pill px-4 py-2">
+						Exit
+					</button> 
+					<button type="submit" class="btn btn-dark rounded-pill px-4 py-2">Add</button>
+				</div>
+
+				<div data-th-if="${#fields.hasErrors('global')}">
+					<span data-th-errors="*{global}"></span>
+				</div>
+			</form>
+
+			<div class="pt-5">
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">Task</th>
+							<th scope="col">Priority</th>
+							<th scope="col">Due Date</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-th-each="i: ${todolist}">
+							<td><span data-th-text="${i.taskDescription}"></span></td>
+							<td><span data-th-text="${i.priority}"></span></td>
+							<td><span data-th-text="${i.dueDate}"></span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+	
+</html>

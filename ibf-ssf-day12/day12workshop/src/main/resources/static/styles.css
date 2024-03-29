@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+h2 {
+    padding-top: 2rem;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding-top: 2rem;
+}
+
+.image {
+    width: 15rem;
+    border-radius: 1rem;
+}
+
+.light-grey {
+    border: 2px solid lightgrey;
+}
+
+.light-blue {
+    border: 2px solid lightblue;
+}

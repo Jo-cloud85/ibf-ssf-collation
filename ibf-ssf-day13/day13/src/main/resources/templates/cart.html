@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+   <form method="POST" action="/cart2" data-th-object="${itemObj}">
+      <table>
+         <tr>
+            <td>Item:</td>
+            <td>
+               <input type="text" name="name" size="30" data-th-field="*{name}">
+               <!-- Error handling -->
+               <small data-th-if="${#fields.hasErrors('name')}"
+                  data-th-each="err: ${#fields.errors('name')}"
+                  data-th-text="${err}">
+               </small>    
+            </td>
+         </tr>
+         <tr>
+            <td>Quantity:</td>
+            <td>
+               <input type="number" name="quantity" data-th-field="*{quantity}">
+               <!-- Error handling -->
+               <small data-th-if="${#fields.hasErrors('quantity')}"
+                  data-th-errors="*{quantity}"
+                  data-th-errorclass="error">
+               </small>
+            </td>
+         </tr>
+         <tr>
+            <td></td>
+            <td> 
+               <button type="submit" formmethod="POST" formaction="/checkout">
+                  Checkout
+               </button> 
+               <button type="submit">Add</button> 
+            </td>
+         </tr>
+      </table>
+
+      <div data-th-if="${#fields.hasErrors('global')}">
+         <span data-th-errors="*{global}"></span>
+      </div>
+
+   </form>
+
+   <div>
+      <table>
+         <thead>
+            <tr>
+               <th>Name</th>
+               <th>Quantity</th>
+            </tr>
+         </thead>
+         <tbody>
+            <tr data-th-each="i: ${cartObj}">
+               <td>
+                  <span data-th-text="${i.name}"></span>
+               </td>
+               <td>
+                  <span data-th-text="${i.quantity}"></span>
+               </td>
+            </tr>
+         </tbody>
+      </table>
+   </div>
+   
+</body>
+</html>

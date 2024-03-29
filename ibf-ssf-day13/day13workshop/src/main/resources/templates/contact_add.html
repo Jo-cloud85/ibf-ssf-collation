@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" 
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+		crossorigin="anonymous">
+</head>
+<body>
+    <div class="container pt-5">
+        <h1 class="font-weight-bold">Contact List</h1>
+        <form method="POST" data-th-action="@{/contact/add}" data-th-object="${newContactObj}">
+            <div class="form-group">
+                <label for="contactName">Name</label>
+                <input 
+                    class="form-control" 
+                    type="text" 
+                    name="contactName" 
+                    data-th-field="*{contactName}">
+                <small
+                    data-th-if="${#fields.hasErrors('contactName')}"
+                    data-th-errors="*{contactName}"
+                    data-th-errorclass="error">
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input 
+                    class="form-control" 
+                    type="text" 
+                    name="email" 
+                    data-th-field="*{email}">
+                <small
+                    data-th-if="${#fields.hasErrors('email')}"
+                    data-th-errors="*{email}"
+                    data-th-errorclass="error">
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="phoneNum">Phone Number</label>
+                <input 
+                    class="form-control" 
+                    type="text" 
+                    name="phoneNum" 
+                    data-th-field="*{phoneNumber}">
+                <small
+                    data-th-if="${#fields.hasErrors('phoneNumber')}"
+                    data-th-errors="*{phoneNumber}"
+                    data-th-errorclass="error">
+                </small>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input 
+                    class="form-control" 
+                    type="date" 
+                    name="dob" 
+                    data-th-field="*{dateOfBirth}">
+                <small
+                    data-th-if="${#fields.hasErrors('dateOfBirth')}"
+                    data-th-errors="*{dateOfBirth}"
+                    data-th-errorclass="error">
+                </small>
+            </div>
+
+            <button type="submit" class="btn btn-dark rounded-pill mt-4 px-4 py-2">Add</button>
+
+            <div data-th-if="${#fields.hasErrors('global')}">
+                <span data-th-errors="*{global}"></span>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

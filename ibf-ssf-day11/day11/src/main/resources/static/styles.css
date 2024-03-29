@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+}
+
+body {
+    width: 100vw;
+    padding: 3rem;
+}
+
+/* div {
+    padding: 3rem;
+} */
+
+.image{
+    width: 100%;
+    border-radius: 2rem;
+}

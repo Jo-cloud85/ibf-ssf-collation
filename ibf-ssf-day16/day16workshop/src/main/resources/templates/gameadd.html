@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" 
+		href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" 
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+		crossorigin="anonymous">
+</head>
+<body>
+    <div class="container pt-5">
+        <h1>Add Game</h1>
+        <form class="pt-4" method="POST" th:action="@{/games/add}" th:object="${newGame}">
+            <div class="form-group">
+                <label for="homeTeam" class="form-label">Home Team</label>
+                <input type="text" class="form-control" name="homeTeam" th:field="*{homeTeam}">
+                <div
+                    class="alert alert-danger mt-3"
+                    role="alert"
+                    th:if="${#fields.hasErrors('homeTeam')}"
+                    th:errors="*{homeTeam}"
+                    th:errorclass="error">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="opponentTeam" class="form-label">Opposition Team</label>
+                <input type="text" class="form-control" name="opponentTeam" th:field="*{opponentTeam}">
+                <div
+                    class="alert alert-danger mt-3"
+                    role="alert"
+                    th:if="${#fields.hasErrors('opponentTeam')}"
+                    th:errors="*{opponentTeam}"
+                    th:errorclass="error">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="venue" class="form-label">Venue</label>
+                <input type="text" class="form-control" name="venue" th:field="*{venue}">
+                <div
+                    class="alert alert-danger mt-3"
+                    role="alert"
+                    th:if="${#fields.hasErrors('venue')}"
+                    th:errors="*{venue}"
+                    th:errorclass="error">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="gameDate" class="form-label">Game Date</label>
+                <input type="date" class="form-control" name="gameDate" th:field="*{gameDate}">
+                <div
+                    class="alert alert-danger mt-3"
+                    role="alert"
+                    th:if="${#fields.hasErrors('gameDate')}"
+                    th:errors="*{gameDate}"
+                    th:errorclass="error">
+                </div>
+            </div>
+
+            <div data-th-if="${#fields.hasErrors('global')}">
+                <span data-th-errors="*{global}"></span>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-dark rounded-pill mt-4 px-4 py-2 ">Add Game</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>
