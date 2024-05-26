@@ -3,7 +3,6 @@ package ibf2023.ssf.day12workshop2.controller;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

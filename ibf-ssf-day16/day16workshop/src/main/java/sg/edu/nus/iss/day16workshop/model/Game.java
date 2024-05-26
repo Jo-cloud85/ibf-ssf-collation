@@ -2,8 +2,6 @@ package sg.edu.nus.iss.day16workshop.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.UUID;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
